@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="conatiner py-3 px-5 mx-auto">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Django and Python Tutorials</h1>
+      <p class="fs-5 text-muted">Find the useful code for your projects</p>
+    </div>
+
+    <ul class="list-group list-group-flush mx-auto p-3">
+        {% for article in articles %}
+  <li class="list-group-item position-relative">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <a href="{{ article.get_absolute_url }}" class="display-6 fw-normal fst-bolder" style="text-decoration: none">{{ article.topic }}</a>
+      <small class="text-muted fw-normal text-end">{{ article.created_at|date:'d M, Y H:i' }}</small>
+    </div>
+      <p class="fs-6 text-muted fst-italic fw">{{ article.summary }}</p>
+  </li>
+        {% endfor %}
+
+</ul>
+</div>
+{% endblock content %}
