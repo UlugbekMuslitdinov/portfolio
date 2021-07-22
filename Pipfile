@@ -9,6 +9,8 @@ psycopg2-binary = "*"
 markdown = "*"
 django-debug-toolbar = "*"
 whitenoise = "*"
+gunicorn = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
