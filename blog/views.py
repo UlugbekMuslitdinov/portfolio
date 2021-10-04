@@ -13,6 +13,11 @@ def skills(request):
     return render(request, 'skills.html')
 
 
+def projects(request):
+    """My projects list"""
+    return render(request, 'projects.html')
+
+
 def articles_list(request):
     """List of all articles sorted by the date created"""
     articles = Article.objects.all().order_by('-created_at')
