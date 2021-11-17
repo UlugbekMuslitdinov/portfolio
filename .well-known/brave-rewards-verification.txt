@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: umuslitdinov.herokuapp.com
+Token: c669e1e1c0bb130e14338f23e4f0477d20490a3e8346660a24480392e1f0b7b7
