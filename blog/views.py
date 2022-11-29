@@ -10,7 +10,9 @@ def home(request):
 
 def skills(request):
     """Skills page"""
-    return render(request, 'skills.html')
+    skills = Skills.objects.all()
+    context = {'skills': skills}
+    return render(request, 'skills.html', context)
 
 
 def projects(request):
