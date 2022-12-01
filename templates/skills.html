@@ -6,7 +6,11 @@
     </main>
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mx-auto">
         {% if skills %}
-            {{ skill.name }}
+            {% for skill in skills %}
+                <div class="col my-auto p-5">
+                    <img src="{{ skill.logo_url }}" class="img-fluid" width="200px" alt="{{ skill.skill }}">
+                </div>
+            {% endfor %}
         {% endif %}
         <div class="col my-auto p-5">
             <img src="https://learndjango.com/static/images/tools/django.svg" class="img-fluid" width="200px" alt="django">

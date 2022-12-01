@@ -8,7 +8,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 
 class SkillsAdmin(admin.ModelAdmin):
-    list_display = ('skill', 'logo')
+    list_display = ('skill', 'logo_url')
 
 
 admin.site.register(Article, ArticleAdmin)

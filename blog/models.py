@@ -19,7 +19,7 @@ class Article(models.Model):
 
 class Skills(models.Model):
     skill = models.CharField(max_length=50)
-    logo = models.ImageField(upload_to='logos/', blank=True, null=True)
+    logo_url = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return self.skill[:50]

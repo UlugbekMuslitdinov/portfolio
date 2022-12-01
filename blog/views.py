@@ -5,7 +5,9 @@ from .models import *
 
 def home(request):
     """Home page for portfolio"""
-    return render(request, 'home.html')
+    skills_list = Skills.objects.all()
+    context = {'skills_list': skills_list}
+    return render(request, 'home.html', context)
 
 
 def skills(request):
