@@ -13,6 +13,8 @@ services:
       - .:/code
     ports:
       - 8000:8000
+    networks:
+      - nginx
     depends_on:
       - db
   db:
@@ -21,6 +23,9 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
-
 volumes:
   postgres_data:
+
+networks:
+    nginx:
+        external: true
