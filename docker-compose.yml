@@ -11,8 +11,6 @@ services:
       - "DEBUG=1"
     volumes:
       - .:/code
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
     ports:
       - 8000:8000
     depends_on:
@@ -23,15 +21,6 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
-  nginx:
-    image: nginx:1.15-alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./data/nginx:/etc/nginx/conf.d
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
 
 volumes:
   postgres_data:

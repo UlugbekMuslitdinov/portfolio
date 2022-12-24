@@ -1,15 +1,18 @@
-version: '3.8'
+version: '3.3'
 
 services:
   web:
     build: .
-#    command: python /code/manage.py runserver 0.0.0.0:8000
-    command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
+    command: python /code/manage.py runserver 0.0.0.0:8000
+#    command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
     environment:
-      - "ENVIRONMENT=production"
+      - "ENVIRONMENT=development"
       - "SECRET_KEY=izs#0gbfl-*12cq%p&d^^5^ac^o#+ag5f8_k&e^bk5-ku^m=9@"
+      - "DEBUG=1"
     volumes:
       - .:/code
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     ports:
       - 8000:8000
     depends_on:
@@ -20,6 +23,15 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
+  nginx:
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
 
 volumes:
   postgres_data:
