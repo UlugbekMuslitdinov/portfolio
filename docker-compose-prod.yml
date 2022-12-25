@@ -3,15 +3,13 @@ version: '3.3'
 services:
   web:
     build: .
-#    command: python /code/manage.py runserver 0.0.0.0:8000
-    command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
+    command: python /code/manage.py runserver 0.0.0.0:8000
+#    command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
     environment:
       - "ENVIRONMENT=production"
       - "SECRET_KEY=izs#0gbfl-*12cq%p&d^^5^ac^o#+ag5f8_k&e^bk5-ku^m=9@"
     volumes:
       - .:/code
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
     ports:
       - 8000:8000
     depends_on:

@@ -9,7 +9,7 @@ psycopg2-binary = "*"
 markdown = "*"
 django-debug-toolbar = "*"
 whitenoise = "*"
-gunicorn = "*"
+gunicorn = "==19.9.0"
 dj-database-url = "*"
 pillow = "*"
 
