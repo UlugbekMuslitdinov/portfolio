@@ -8,11 +8,16 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - certbot-etc-letsencrypt:/etc/letsencrypt
-      - certbot-var-lib-letsencrypt:/var/lib/letsencrypt
-      - nginx_conf:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      - ./data/nginx:/etc/nginx/conf.d
     depends_on:
       - web
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
   web:
     build: .
 #    command: python /code/manage.py runserver 0.0.0.0:8000
