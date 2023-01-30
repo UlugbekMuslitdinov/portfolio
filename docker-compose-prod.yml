@@ -1,37 +1,29 @@
 version: '3.3'
 
 services:
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot-etc-letsencrypt:/etc/letsencrypt
-      - certbot-var-lib-letsencrypt:/var/lib/letsencrypt
-    environment:
-      - DOMAIN=umuslitdinov.dev
-      - EMAIL=ulugbekmuslitdinov@gmail.com
-    command: certbot certonly --webroot -w /var/www/certbot
-    depends_on:
-      - nginx
   nginx:
-    build: ./nginx
+    image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - certbot-etc-letsencrypt:/etc/letsencrypt
-      - nginx_conf:/etc/nginx/nginx.conf
+      - certbot-var-lib-letsencrypt:/var/lib/letsencrypt
+      - nginx_conf:/etc/nginx/conf.d
     depends_on:
       - web
   web:
     build: .
-    command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
+    command: python /code/manage.py runserver 0.0.0.0:8000
+#    command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
     environment:
-      - "ENVIRONMENT=development"
+      - "ENVIRONMENT=production"
       - "SECRET_KEY=izs#0gbfl-*12cq%p&d^^5^ac^o#+ag5f8_k&e^bk5-ku^m=9@"
     volumes:
       - .:/code
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
     depends_on:
       - db
   db:
