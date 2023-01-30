@@ -22,8 +22,8 @@ services:
       - "SECRET_KEY=izs#0gbfl-*12cq%p&d^^5^ac^o#+ag5f8_k&e^bk5-ku^m=9@"
     volumes:
       - .:/code
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     depends_on:
       - db
   db:
