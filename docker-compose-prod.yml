@@ -15,15 +15,17 @@ services:
   nginx:
     build: ./nginx
     ports:
-      - 80:80
+      - "80:80"
+      - "443:443"
+    volumes:
+      - certbot-etc-letsencrypt:/etc/letsencrypt
+      - nginx_conf:/etc/nginx/nginx.conf
     depends_on:
       - web
   web:
     build: .
-#    command: python /code/manage.py runserver 0.0.0.0:8000
     command: gunicorn portfolio.wsgi -b 0.0.0.0:8000
     environment:
-#      - "ENVIRONMENT=production"
       - "ENVIRONMENT=development"
       - "SECRET_KEY=izs#0gbfl-*12cq%p&d^^5^ac^o#+ag5f8_k&e^bk5-ku^m=9@"
     volumes:
