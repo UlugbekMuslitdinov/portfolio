@@ -28,6 +28,7 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 ALLOWED_HOSTS = ['umuslitdinov.dev', 'www.umuslitdinov.dev', 'umuslitdinov.herokuapp.com', 'localhost', '127.0.0.1', '185.196.213.35', '143.110.227.121']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
