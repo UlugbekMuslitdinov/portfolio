@@ -12,7 +12,6 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       - ./data/nginx:/etc/nginx/conf.d:rw
-      - nginx_conf:/etc/nginx/conf.d
     depends_on:
       - web
   certbot:
@@ -47,4 +46,3 @@ volumes:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
-  nginx_conf:
