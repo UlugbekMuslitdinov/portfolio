@@ -29,7 +29,7 @@ services:
       - "ENVIRONMENT=production"
     volumes:
       - .:/code
-      - static:/code/staticfiles
+      - staticfiles:/code/staticfiles
     expose:
       - 8000
     depends_on:
@@ -42,7 +42,7 @@ services:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
 
 volumes:
-  static:
+  staticfiles:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
