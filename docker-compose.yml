@@ -47,4 +47,3 @@ volumes:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
-  nginx_conf:
