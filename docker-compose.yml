@@ -14,12 +14,14 @@ services:
       - ./data/nginx:/etc/nginx/conf.d:rw
     depends_on:
       - web
+
   certbot:
     image: certbot/certbot
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
   web:
     build: .
 #    command: python /code/manage.py runserver 0.0.0.0:8000
@@ -29,11 +31,12 @@ services:
       - "ENVIRONMENT=production"
     volumes:
       - .:/code
-      - staticfiles:/code/staticfiles
+      - ./web/staticfiles:/var/www/umuslitdinov.dev/staticfiles
     expose:
       - 8000
     depends_on:
       - db
+
   db:
     image: postgres:11
     volumes:
@@ -42,7 +45,6 @@ services:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
 
 volumes:
-  staticfiles:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
