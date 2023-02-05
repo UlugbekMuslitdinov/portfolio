@@ -12,6 +12,7 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       - ./data/nginx:/etc/nginx/conf.d
+      - nginx_conf:/etc/nginx/conf.d
     depends_on:
       - web
   certbot:
