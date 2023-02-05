@@ -12,6 +12,7 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       - ./data/nginx:/etc/nginx/conf.d:rw
+      - static_volume:/code/staticfiles
     depends_on:
       - web
 
@@ -31,7 +32,7 @@ services:
       - "ENVIRONMENT=production"
     volumes:
       - .:/code
-      - ./web/staticfiles:/var/www/umuslitdinov.dev/staticfiles
+      - static_volume:/code/staticfiles
     expose:
       - 8000
     depends_on:
@@ -45,6 +46,7 @@ services:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
 
 volumes:
+  static_volume:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
