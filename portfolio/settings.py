@@ -163,7 +163,7 @@ if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    CSRF_TRUSTED_ORIGINS = ['umuslitdinov.dev', 'www.umuslitdinov.dev', '143.110.227.121']
+    CSRF_TRUSTED_ORIGINS = ['https://umuslitdinov.dev', 'https://www.umuslitdinov.dev']
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
