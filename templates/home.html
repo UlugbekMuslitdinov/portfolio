@@ -1,60 +1,78 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="p-5 mb-4 bg-light rounded-3 border">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Hi, I am Ulugbek.</h1>
-        <p class="col-md-8 fs-4">I am backend developer and I am keen on coding web-sites. I am self-taught programmer and I learned Python through reading a plenty of books. Check out my skills so you will have an image of what I can do.</p>
-        <a href="{% url 'blog:skills' %}"><button class="btn btn-primary btn-lg" type="button">My skills &raquo;</button></a>
-      </div>
-</div>
+    <div class="p-5 mb-4 bg-light rounded-3 border">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Hi, I am Ulugbek.</h1>
+            <p class="col-md-8 fs-4">I am backend developer and I am keen on coding web-sites. I am self-taught
+                programmer and I learned Python through reading a plenty of books. Check out my skills so you will have
+                an image of what I can do.</p>
+            <a href="{% url 'blog:skills' %}">
+                <button class="btn btn-primary btn-lg" type="button">My skills &raquo;</button>
+            </a>
+        </div>
+    </div>
     {% if skills_list %}
-    <div class="row align-items-md-stretch ms-2 me-2 bg-white">
+        <div class="row align-items-md-stretch ms-2 me-2 bg-white">
         <div class="col-md-6 mt-2 mb-2 col-lg-6 col-sm-6 rounded-3 h-100 p-2">
-          <div class="container-fluid container-sm">
-            <h1 class="display-5 fw-bold">My skills</h1>
-            <ul class="list-group">
-              {% for skill in skills_list %}
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                      {{ skill.skill }}
-                      <span class="badge rounded-pill">
+            <div class="container-fluid container-sm">
+                <h1 class="display-5 fw-bold">My skills</h1>
+                <ul class="list-group">
+                    {% for skill in skills_list %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ skill.skill }}
+                            <span class="badge rounded-pill">
                           <img src="{{ skill.logo_url }}" width="100px" class="img-fluid" alt="{{ skill.skill }}">
                       </span>
-                  </li>
-                {% endfor %}
-            </ul>
-          </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     {% endif %}
-    </div>
+</div>
     <div class="row align-items-md-stretch ms-2 me-2">
-      <div class="col-md-6 mt-2 mb-2 col-lg-6 col-sm-6">
-        <div class="h-100 p-5 text-white bg-dark rounded-3">
-          <h2>My workings</h2>
-          <p>Also there are a bunch of my works with varying complexity I am proud of. Have a look to my Symphonies.</p>
-          <a href="{% url 'blog:projects' %}"><button class="btn btn-outline-light" type="button">Visit apps gallery &raquo;</button></a>
+        <div class="col-md-6 mt-2 mb-2 col-lg-6 col-sm-6">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>My workings</h2>
+                <p>Also there are a bunch of my works with varying complexity I am proud of. Have a look to my
+                    Symphonies.</p>
+                <a href="{% url 'blog:projects' %}">
+                    <button class="btn btn-outline-light" type="button">Visit apps gallery &raquo;</button>
+                </a>
+            </div>
         </div>
-      </div>
+{#        <div class="col-md-6 mt-2 mb-2">#}
+{#            <div class="h-100 p-5 bg-light border rounded-3">#}
+{#                <h2>My blog</h2>#}
+{#                <p>In addition, as a hobby, I have my blog, where I am sharing my knowledge of Python, Django and other#}
+{#                    backend technologies with others. Check out my blog and read some interesting articles.</p>#}
+{#                <a href="{% url 'blog:articles_list' %}">#}
+{#                    <button class="btn btn-outline-secondary" type="button">Backender's blog</button>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
         <div class="col-md-6 mt-2 mb-2">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>My blog</h2>
-          <p>In addition, as a hobby, I have my blog, where I am sharing my knowledge of Python, Django and other backend technologies with others. Check out my blog and read some interesting articles.</p>
-          <a href="{% url 'blog:articles_list' %}"><button class="btn btn-outline-secondary" type="button">Backender's blog</button></a>
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Awesome sources</h2>
+                <p>This is my own project that will be helpful for other people. This repository contains different kind
+                    of useful materials, such as books, GitHub repositories, links and etc., for plenty of programming
+                    languages and their frameworks. Everyone is welcome to contribute.</p>
+                <a href="https://github.com/UlugbekMuslitdinov/awesome-sources">
+                    <button class="btn btn-outline-secondary" type="button">Awesome sources</button>
+                </a>
+            </div>
         </div>
-      </div>
         <div class="col-md-6 mt-2 mb-2">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Awesome sources</h2>
-          <p>This is my own project that will be helpful for other people. This repository contains different kind of useful materials, such as books, GitHub repositories, links and etc., for plenty of programming languages and their frameworks. Everyone is welcome to contribute.</p>
-            <a href="https://github.com/UlugbekMuslitdinov/awesome-sources"><button class="btn btn-outline-secondary" type="button">Awesome sources</button></a>
+            <div class="h-100 p-5 text-white bg-secondary rounded-3">
+                <h2>Awesome Django</h2>
+                <p>This repository was created to be contributed to <a href="https://github.com/sindresorhus/awesome"
+                                                                       class="text-dark">Awesome List</a>. Awesome
+                    Django contains different kind of material related to Django. Everyone is welcome to contribute.</p>
+                <a target="_blank" href="https://github.com/wsvincent/awesome-django">
+                    <button class="btn btn-outline-light" type="button">Contribute</button>
+                </a>
+            </div>
         </div>
-      </div>
-        <div class="col-md-6 mt-2 mb-2">
-        <div class="h-100 p-5 text-white bg-secondary rounded-3">
-          <h2>Awesome Django</h2>
-          <p>This repository was created to be contributed to <a href="https://github.com/sindresorhus/awesome" class="text-dark">Awesome List</a>. Awesome Django contains different kind of material related to Django. Everyone is welcome to contribute.</p>
-            <a target="_blank" href="https://github.com/wsvincent/awesome-django"><button class="btn btn-outline-light" type="button">Contribute</button></a>
-        </div>
-      </div>
     </div>
 {% endblock content %}
