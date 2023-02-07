@@ -13,3 +13,6 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+    def skills_used_list(self):
+        return [{'name': skill.skill, 'logo_url': skill.logo_url} for skill in self.skills_used.all()]

@@ -5,3 +5,16 @@ code {
 .language-json {
     background-color: gray;
 }
+
+
+
+.stack-used {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+}
+
+.stack-used > img {
+    height: 20px;
+    justify-self: center;
+}

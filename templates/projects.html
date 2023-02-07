@@ -2,16 +2,35 @@
 
 {% block content %}
     <div class="py-5 text-center container">
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        hi
-                    </div>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row mb-2">
+                    {% for project in projects_list %}
+                        <div class="col-md-6">
+                            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <h3 class="mb-0">{{ project.title }}</h3>
+                                    <p class="card-text mb-auto">{{ project.description }}</p>
+                                    <h5 class="mb-0">Skills used</h5>
+                                    <div class="skills-used">
+                                        {% for skill in project.skills_used_list %}
+                                            <img src="{{ skill.logo_url }}" alt="{{ skill.name }}" width="50">
+                                        {% endfor %}
+                                    </div>
+                                <br>
+                                    <div class="project-nav-btns">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='{{ project.url }}'">View SIte</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='{{ project.source_code }}'">Source Code</button>
+                                    </div>
+                                </div>
+                                <div class="col-auto d-none d-lg-block">
+                                    <img src="{{ project.image.url }}" alt="project image" width="200" height="250">
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock content %}

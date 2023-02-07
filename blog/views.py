@@ -15,8 +15,3 @@ def skills(request):
     skills = Skills.objects.all()
     context = {'skills': skills}
     return render(request, 'skills.html', context)
-
-
-def projects(request):
-    """My projects list"""
-    return render(request, 'projects.html')
