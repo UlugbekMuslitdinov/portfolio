@@ -17,10 +17,19 @@
                                             <img src="{{ skill.logo_url }}" alt="{{ skill.name }}" width="50">
                                         {% endfor %}
                                     </div>
-                                <br>
+                                    <br>
                                     <div class="project-nav-btns">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='{{ project.url }}'">View SIte</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.href='{{ project.source_code }}'">Source Code</button>
+                                        {% if project.url %}
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    onclick="window.location.href='{{ project.url }}'">View SIte
+                                            </button>
+                                        {% endif %}
+                                        {% if project.source_code %}
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    onclick="window.location.href='{{ project.source_code }}'">Source
+                                                Code
+                                            </button>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
