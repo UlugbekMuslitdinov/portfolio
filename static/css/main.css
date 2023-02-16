@@ -6,8 +6,6 @@ code {
     background-color: gray;
 }
 
-
-
 .stack-used {
     display: grid;
     justify-content: space-around;
@@ -23,4 +21,8 @@ code {
     width: 250px;
     justify-self: center;
     align-self: center;
+}
+
+.skills-used > img {
+    margin: 10px;
 }
