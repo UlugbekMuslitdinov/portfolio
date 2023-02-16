@@ -13,6 +13,7 @@ services:
       - ./data/certbot/www:/var/www/certbot
       - ./data/nginx:/etc/nginx/conf.d:rw
       - static_volume:/code/staticfiles
+      - media_volume:/code/media
     depends_on:
       - web
 
@@ -33,6 +34,7 @@ services:
     volumes:
       - .:/code
       - static_volume:/code/staticfiles
+      - media_volume:/code/media
     expose:
       - 8000
     depends_on:
