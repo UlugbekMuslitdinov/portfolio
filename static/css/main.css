@@ -20,7 +20,7 @@ code {
 }
 
 .project-logo {
-    height: 20px;
+    width: 250px;
     justify-self: center;
     align-self: center;
 }
