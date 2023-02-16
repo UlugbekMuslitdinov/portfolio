@@ -18,3 +18,9 @@ code {
     height: 20px;
     justify-self: center;
 }
+
+.project-logo {
+    height: 20px;
+    justify-self: center;
+    align-self: center;
+}
