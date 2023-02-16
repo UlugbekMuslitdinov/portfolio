@@ -11,10 +11,10 @@
                                 <div class="col p-4 d-flex flex-column position-static">
                                     <h3 class="mb-0">{{ project.title }}</h3>
                                     <p class="card-text mb-auto">{{ project.description }}</p>
-                                    <h5 class="mb-0">Skills used</h5>
                                     <div class="skills-used">
                                         {% for skill in project.skills_used_list %}
-                                            <img src="{{ skill.logo_url }}" alt="{{ skill.name }}" width="50">
+                                            <img src="{{ skill.logo_url }}" alt="{{ skill.name }}" width="50px"
+                                                 height="50px">
                                         {% endfor %}
                                     </div>
                                     <br>
