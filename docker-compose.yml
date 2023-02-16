@@ -49,6 +49,7 @@ services:
 
 volumes:
   static_volume:
+  media_volume:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
