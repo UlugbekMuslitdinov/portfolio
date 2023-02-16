@@ -12,24 +12,6 @@
             </a>
         </div>
     </div>
-    {% if skills_list %}
-        <div class="row align-items-md-stretch ms-2 me-2 bg-white">
-        <div class="col-md-6 mt-2 mb-2 col-lg-6 col-sm-6 rounded-3 h-100 p-2">
-            <div class="container-fluid container-sm">
-                <h1 class="display-5 fw-bold">My skills</h1>
-                <ul class="list-group">
-                    {% for skill in skills_list %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ skill.skill }}
-                            <span class="badge rounded-pill">
-                          <img src="{{ skill.logo_url }}" width="100px" class="img-fluid" alt="{{ skill.skill }}">
-                      </span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    {% endif %}
 </div>
     <div class="row align-items-md-stretch ms-2 me-2">
         <div class="col-md-6 mt-2 mb-2 col-lg-6 col-sm-6">
