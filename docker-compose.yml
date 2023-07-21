@@ -50,6 +50,7 @@ services:
       - certbot-etc-letsencrypt:/etc/letsencrypt
       - certbot-var-lib-letsencrypt:/var/lib/letsencrypt
       - nginx_conf:/etc/nginx/conf.d
+      - /var/www/certbot:/var/www/certbot
     depends_on:
       - nginx
     command: certonly --webroot --webroot-path=/var/www/certbot --email ulugbekmuslitdinov@gmail.com --agree-tos --no-eff-email --force-renewal -d umuslitdinov.dev
