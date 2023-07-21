@@ -9,9 +9,9 @@ services:
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-      - ./data/nginx:/etc/nginx/conf.d:rw
+      - certbot-etc-letsencrypt:/etc/letsencrypt
+      - certbot-var-lib-letsencrypt:/var/www/certbot
+      - nginx-data::/etc/nginx/conf.d:rw
       - static_volume:/code/staticfiles
     depends_on:
       - web
@@ -19,8 +19,8 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
+      - certbot-etc-letsencrypt:/etc/letsencrypt
+      - certbot-var-lib-letsencrypt:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   web:
@@ -50,3 +50,4 @@ volumes:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
+  nginx-data:
