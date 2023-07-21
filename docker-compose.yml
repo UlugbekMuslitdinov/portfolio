@@ -11,7 +11,7 @@ services:
     volumes:
       - certbot-etc-letsencrypt:/etc/letsencrypt
       - certbot-var-lib-letsencrypt:/var/www/certbot
-      - nginx-data::/etc/nginx/conf.d:rw
+      - nginx-data:/etc/nginx/conf.d:rw
       - static_volume:/code/staticfiles
     depends_on:
       - web
