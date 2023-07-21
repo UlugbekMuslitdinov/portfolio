@@ -1,27 +1,6 @@
 version: '3.3'
 
 services:
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-    volumes:
-      - certbot-etc-letsencrypt:/etc/letsencrypt
-      - certbot-var-lib-letsencrypt:/var/www/certbot
-      - nginx-data:/etc/nginx/conf.d:rw
-      - static_volume:/code/staticfiles
-    depends_on:
-      - web
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot-etc-letsencrypt:/etc/letsencrypt
-      - certbot-var-lib-letsencrypt:/var/www/certbot
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   web:
     build: .
@@ -32,11 +11,14 @@ services:
       - "ENVIRONMENT=production"
     volumes:
       - .:/code
-      - static_volume:/code/staticfiles
+      - static_volume:/code/static
+      - media_volume:/code/media
     expose:
       - 8000
     depends_on:
       - db
+    networks:
+      - webnet
 
   db:
     image: postgres:11
@@ -44,10 +26,40 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
+    networks:
+      - webnet
+  
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_volume:/code/static:ro
+      - media_volume:/code/media:ro
+      - nginx_conf:/etc/nginx/conf.d
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - web
+    networks:
+      - webnet
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot-etc-letsencrypt:/etc/letsencrypt
+      - certbot-var-lib-letsencrypt:/var/lib/letsencrypt
+      - nginx_conf:/etc/nginx/conf.d
+    depends_on:
+      - nginx
+    command: certonly --webroot --webroot-path=/var/www/certbot --email ulugbekmuslitdinov@gmail.com --agree-tos --no-eff-email --force-renewal -d umuslitdinov.dev
+    networks:
+    - webnet
 
 volumes:
   static_volume:
   postgres_data:
   certbot-etc-letsencrypt:
   certbot-var-lib-letsencrypt:
-  nginx-data:
+  nginx-conf:
+  media_volume:
