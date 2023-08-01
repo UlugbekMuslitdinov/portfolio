@@ -1,0 +1,28 @@
+code {
+    background-color: gray;
+}
+
+.language-json {
+    background-color: gray;
+}
+
+.stack-used {
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+}
+
+.stack-used > img {
+    height: 20px;
+    justify-self: center;
+}
+
+.project-logo {
+    width: 250px;
+    justify-self: center;
+    align-self: center;
+}
+
+.skill-logo {
+    margin: 10px;
+}
