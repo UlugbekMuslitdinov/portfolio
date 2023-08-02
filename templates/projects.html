@@ -14,8 +14,13 @@
                   <p class="card-text">{{project.description}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      {% if project.url %}
+                      <a href="{{project.url}}"><button type="button" class="btn btn-sm btn-outline-secondary">Live project</button></a>
+                      {% endif %}
+
+                      {% if project.source_code %}
+                      <a href="{{project.source_code}}"><button type="button" class="btn btn-sm btn-outline-secondary">Source code</button></a>
+                      {% endif %}
                     </div>
                     <small style="color: {{project.type.color}};">
                         {{project.type.image |safe}}
