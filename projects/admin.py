@@ -9,8 +9,13 @@ class SkillsInline(admin.TabularInline):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'image', 'url', 'source_code')
+    list_display = ('title', 'description', 'image', 'url', 'source_code', 'type')
     inlines = [SkillsInline]
+
+class ProjectTypeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'color')
+
 
 
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(ProjectType, ProjectTypeAdmin)

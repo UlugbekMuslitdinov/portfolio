@@ -1,17 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="py-5 text-center container">
     <div class="album py-5 bg-light">
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        hi
+          <div class="row">
+
+            {% for project in projects %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{project.image.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="mb-0 text-dark" href="#">{{project.title}}</h3>
+                  <p class="card-text">{{project.description}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </div>
+                    <small style="color: {{project.type.color}};">
+                        {{project.type.image |safe}}
+                        {{project.type.title}}
+                    </small>
+                  </div>
                 </div>
+              </div>
             </div>
+            {% endfor %}
+
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
+
 {% endblock content %}

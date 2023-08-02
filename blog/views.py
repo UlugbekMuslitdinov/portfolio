@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from .models import *
+from projects.models import Project
 
 
 def home(request):
@@ -19,4 +20,6 @@ def skills(request):
 
 def projects(request):
     """My projects list"""
-    return render(request, 'projects.html')
+    project_list = Project.objects.all()
+    context = {'projects': project_list}
+    return render(request, 'projects.html', context)
