@@ -14,7 +14,7 @@ services:
       - static_volume:/code/static
       - media_volume:/code/media
     ports:
-      - 8000:8000
+      - 8001:8000
     depends_on:
       - db
   db:
