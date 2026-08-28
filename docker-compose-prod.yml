@@ -12,6 +12,9 @@ services:
       - 8001:8000
     depends_on:
       - db
+    volumes:
+      - static_volume:/code/static
+      - media_volume:/code/media
   db:
     image: postgres:16
     volumes:
@@ -21,3 +24,5 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:
