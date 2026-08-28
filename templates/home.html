@@ -14,7 +14,7 @@
     </div>
 </div>
     <div class="row align-items-md-stretch ms-2 me-2">
-        <div class="col-md-6 mt-2 mb-2 col-lg-6 col-sm-6">
+        <div class="col-md-4 col-sm-6 mt-2 mb-2">
             <div class="h-100 p-5 text-white bg-dark rounded-3">
                 <h2>My workings</h2>
                 <p>Also there are a bunch of my works with varying complexity I am proud of. Have a look to my
@@ -24,7 +24,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-6 mt-2 mb-2">
+        <div class="col-md-4 col-sm-6 mt-2 mb-2">
             <div class="h-100 p-5 bg-light border rounded-3">
                 <h2>Awesome sources</h2>
                 <p>This is my own project that will be helpful for other people. This repository contains different kind
@@ -32,6 +32,16 @@
                     languages and their frameworks. Everyone is welcome to contribute.</p>
                 <a href="https://github.com/UlugbekMuslitdinov/awesome-sources">
                     <button class="btn btn-outline-secondary" type="button">Awesome sources</button>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2 mb-2">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>Blog</h2>
+                <p>I write about software development, Python, Django and other things I learn along the way. Check out
+                    my latest posts.</p>
+                <a href="{% url 'blog:post_list' %}">
+                    <button class="btn btn-outline-light" type="button">Read the blog &raquo;</button>
                 </a>
             </div>
         </div>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load markdown_extras %}
+
+{% block title %}{{ post.title }} - Ulugbek Muslitdinov{% endblock %}
+{% block meta_title %}{{ post.title }} - Ulugbek Muslitdinov{% endblock %}
+{% block meta_description %}{{ post.description }}{% endblock %}
+{% if post.tags %}
+    {% block meta_keywords %}{{ post.tags }}{% endblock %}
+{% endif %}
+
+{% block head %}
+    <link rel="canonical" href="http://umuslitdinov.dev{{ post.get_absolute_url }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ post.title }}">
+    <meta property="og:description" content="{{ post.description }}">
+    <meta property="og:url" content="http://umuslitdinov.dev{{ post.get_absolute_url }}">
+    <meta property="article:published_time" content="{{ post.created_at|date:'Y-m-d\TH:i:sP' }}">
+    <meta property="article:modified_time" content="{{ post.updated_at|date:'Y-m-d\TH:i:sP' }}">
+    {% for tag in post.tag_list %}
+        <meta property="article:tag" content="{{ tag }}">
+    {% endfor %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ post.title }}">
+    <meta name="twitter:description" content="{{ post.description }}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ post.title|escapejs }}",
+      "description": "{{ post.description|escapejs }}",
+      "url": "http://umuslitdinov.dev{{ post.get_absolute_url }}",
+      "datePublished": "{{ post.created_at|date:'Y-m-d\TH:i:sP' }}",
+      "dateModified": "{{ post.updated_at|date:'Y-m-d\TH:i:sP' }}",
+      "author": {
+        "@type": "Person",
+        "name": "Ulugbek Muslitdinov",
+        "url": "http://umuslitdinov.dev"
+      },
+      "keywords": "{{ post.tags|escapejs }}"
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+    <main role="main" class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'blog:home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'blog:post_list' %}">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+            </ol>
+        </nav>
+
+        <article class="p-5 mb-4 bg-light rounded-3 border">
+            <header class="mb-4">
+                <h1 class="display-5 fw-bold">{{ post.title }}</h1>
+                <p class="text-muted">
+                    <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"F j, Y" }}</time>
+                    {% if post.tag_list %}
+                        &middot;
+                        {% for tag in post.tag_list %}
+                            <span class="badge bg-secondary">{{ tag }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </header>
+            <div class="markdown-body">
+                {{ post.body|markdown|safe }}
+            </div>
+        </article>
+
+        <a href="{% url 'blog:post_list' %}" class="btn btn-outline-secondary mb-5">&laquo; Back to blog</a>
+    </main>
+{% endblock content %}

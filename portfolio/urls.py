@@ -19,10 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from blog.sitemaps import PagesSitemap
+from blog.sitemaps import PagesSitemap, PostSitemap
 
 sitemaps = {
     'pages': PagesSitemap,
+    'posts': PostSitemap,
 }
 
 urlpatterns = [
