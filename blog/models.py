@@ -8,6 +8,12 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     body = models.TextField(help_text='Markdown formatted content')
+    cover_image = models.ImageField(
+        upload_to='blog/covers/',
+        blank=True,
+        null=True,
+        help_text='Optional. Shown at the top of the post and as a thumbnail in the blog list.'
+    )
     tags = models.CharField(
         max_length=250,
         blank=True,

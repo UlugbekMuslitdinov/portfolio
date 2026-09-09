@@ -14,7 +14,7 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     fieldsets = (
         (None, {
-            'fields': ('title', 'slug', 'body')
+            'fields': ('title', 'slug', 'cover_image', 'body')
         }),
         ('Meta', {
             'fields': ('tags', 'excerpt', 'published'),

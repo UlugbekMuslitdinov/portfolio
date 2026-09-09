@@ -14,6 +14,9 @@
     <meta property="og:title" content="{{ post.title }}">
     <meta property="og:description" content="{{ post.description }}">
     <meta property="og:url" content="http://umuslitdinov.dev{{ post.get_absolute_url }}">
+    {% if post.cover_image %}
+        <meta property="og:image" content="http://umuslitdinov.dev{{ post.cover_image.url }}">
+    {% endif %}
     <meta property="article:published_time" content="{{ post.created_at|date:'Y-m-d\TH:i:sP' }}">
     <meta property="article:modified_time" content="{{ post.updated_at|date:'Y-m-d\TH:i:sP' }}">
     {% for tag in post.tag_list %}
@@ -52,6 +55,9 @@
         </nav>
 
         <article class="p-5 mb-4 bg-light rounded-3 border">
+            {% if post.cover_image %}
+                <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" class="img-fluid rounded mb-4">
+            {% endif %}
             <header class="mb-4">
                 <h1 class="display-5 fw-bold">{{ post.title }}</h1>
                 <p class="text-muted">
